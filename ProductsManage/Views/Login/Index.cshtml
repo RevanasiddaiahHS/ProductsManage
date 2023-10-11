@@ -1,0 +1,46 @@
+﻿@model ProductsManage.Models.Login
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (@ViewBag.message != null)
+{
+    <div class="positionfix">
+        <div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered" id="divsuccessmessage">
+            @ViewBag.message
+            <button type="button" class="close"><span>×</span><span class="sr-only">Close</span></button>
+
+        </div>
+    </div>
+
+
+}
+<h4>Login</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="VerifingEmailandPassword" asp-controller="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmailID" class="control-label"></label>
+                <input asp-for="EmailID" class="form-control" />
+                <span asp-validation-for="EmailID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
